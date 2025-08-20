@@ -6,7 +6,7 @@ function validateInput(name,address,latitude,longitude){
         return "All fields are required";
     }
     if(isNaN(latitude) || isNaN(longitude)){
-        "Latitude and Longitude should be numbers"
+        return "Latitude and Longitude should be numbers"
     }
     return null;
 }
@@ -70,7 +70,7 @@ exports.listSchools= async(req,res)=>{
 
         }
         //FETCH ALL SCHOOLS
-        const[schools]= await db.query("SELECT *FROM SCHOOLS");
+        const[schools]= await db.query("SELECT *FROM schools");
 
         //ATTACH THE DISTANCE TO EACH SCHOOL
         const schoolsWithDistance = schools.map(school => {
